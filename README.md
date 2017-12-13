@@ -18,7 +18,7 @@ $ composer require dev4born/logs
 In the `$providers` array add the `service providers` for this package.
 
 ```
-Dev4Born\logs\LogsLaravelServiceProvider::class
+dev4born\logs\LogsLaravelServiceProvider::class
 ```
 
 Create config file `config/logs.php` and add the following lines.
@@ -40,6 +40,22 @@ Go to http://{your-project}/laravel/logs
 ## JSON API
 
 Go to http://{your-project}/laravel/logs/json
+
+**Output**
+
+There are no problems.
+
+```
+{'error':'Everything functions properly.'}
+```
+
+There was an error.
+
+```
+{'error':'Perhaps an error occurred - check the logs/events.'}
+```
+
+Messages can be implemented in the dashboard.
 
 ## Changelog
 
