@@ -1,6 +1,7 @@
 
 # Logs - Laravel
 
+[![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Total Downloads][ico-downloads]][link-downloads]
 
@@ -9,7 +10,7 @@
 Via Composer
 
 ``` bash
-$ composer require Dev4Born/logs
+$ composer require dev4born/logs
 ```
 
 ## Integration
@@ -26,7 +27,7 @@ Create config file `config/logs.php` and add the following lines.
 return [
     ...
     'admin',
-	'superuser',
+    'superuser',
 ];
 ```
 
@@ -67,8 +68,11 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 ![Dashboard](https://dev4born.pro/pub/github/logs_screenshot.png)
 
+[ico-version]: https://img.shields.io/packagist/v/dev4born/logs.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/dev4born/logs.svg?style=flat-square
 
-[link-downloads]: https://packagist.org/packages/Dev4Born/logs
+[link-packagist]: https://packagist.org/packages/dev4born/logs
+[link-downloads]: https://packagist.org/packages/dev4born/logs
 [link-author]: https://github.com/dev4born
 [link-contributors]: ../../contributors
