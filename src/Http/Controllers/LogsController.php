@@ -52,7 +52,7 @@ class LogsController extends Controller
 	{
 		$this->permissions = $this->permission();
 		
-		$this->middleware($this->permissions)->except('logout');
+		$this->middleware($this->permissions);
 	}
 
 	/**
