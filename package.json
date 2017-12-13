@@ -1,7 +1,3 @@
 {
-  "version": "1.0.0",
-  "scripts": {
-    "version": "git add package.json",
-    "postversion": "git push && git push --tags"
-  }
+  "version": "1.0.0"
 }
