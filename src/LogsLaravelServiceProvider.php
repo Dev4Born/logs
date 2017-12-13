@@ -12,7 +12,7 @@
  *  
  */
 
-namespace Dev4Born\logs;
+namespace dev4born\logs;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
@@ -22,7 +22,7 @@ use Illuminate\Routing\Router;
  *  Provider LogsLaravelServiceProvider
  *  
  *  
- *  @package Dev4Born\logs
+ *  @package dev4born\logs
  *  
  */
 
@@ -69,7 +69,7 @@ class LogsLaravelServiceProvider extends ServiceProvider
 	
     public function Routes(Router $routers)
     {		
-        $routers->group(['namespace' => 'Dev4Born\logs\Http\Controllers'], function($routers) {
+        $routers->group(['namespace' => 'dev4born\logs\Http\Controllers'], function($routers) {
 			
             require __DIR__.'/Http/web.php';
 			

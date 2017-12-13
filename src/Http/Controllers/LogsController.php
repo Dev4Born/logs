@@ -12,7 +12,7 @@
  *  
  */
 
-namespace Dev4Born\logs\Http\Controllers;
+namespace dev4born\logs\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
  *  Class LogsController
  *  
  *  
- *  @package Dev4Born\logs
+ *  @package dev4born\logs
  *  
  */
 

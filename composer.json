@@ -1,16 +1,16 @@
 {
-    "name": "Dev4Born/logs",
+    "name": "dev4born/logs",
     "type": "library",
     "description": "Logs/events + API - Laravel",
     "keywords": ["log", "log-viewer", "logging", "laravel", "dev4born"],
-    "homepage": "https://github.com/Dev4Born/logs",
+    "homepage": "https://github.com/dev4born/logs",
     "license": "MIT",
     "authors": [
         {
             "name": "Miłosz Nowak",
             "email": "milosz.nowak@dev4born.pro",
             "homepage": "https://github.com/dev4born",
-            "role": "https://github.com/Dev4Born/logs"
+            "role": "https://github.com/dev4born/logs"
         }
     ],
     "require": {
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Dev4Born\\logs\\": "src"
+            "dev4born\\logs\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dev4Born\\logs\\": "tests"
+            "dev4born\\logs\\": "tests"
         }
     },
     "scripts": {
