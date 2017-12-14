@@ -34,7 +34,7 @@
   <body onload="scroll_pre();">
     <nav class="navbar-expand-lg navbar-dark bg-color fixed-top">
       <div class="container">
-        <a class="navbar-brand" href="{{ url('laravel/logs') }}">Logs - Laravel</a>
+        <a class="navbar-brand" href="{{ url('laravel/'.$request->route('secret').'/logs') }}">Logs - Laravel</a>
       </div>
     </nav>
     <div class="container">
@@ -55,13 +55,13 @@
                         <td>{{ basename($file) }}</td>
 						<td>{{ date('Y-m-d H:i:s', filemtime($file)) }}</td>
                         <td>
-		                    <a href="{{ url('laravel/logs?file='.basename($file)) }}" class="btn btn-default btn-sm">
+		                    <a href="{{ url('laravel/'.$request->route('secret').'/logs?file='.basename($file)) }}" class="btn btn-default btn-sm">
                                 <i class="fa fa-eye"></i> Show
                             </a>			
-		                    <a href="{{ url('laravel/logs/'.basename($file)) }}" class="btn btn-default btn-sm">
+		                    <a href="{{ url('laravel/logs/'.sha1(date('Y-m-d H:i')).'_'.basename($file)) }}" class="btn btn-default btn-sm">
                                 <i class="fa fa-download"></i> Download
                             </a>
-		                    <a href="{{ url('laravel/logs/remove/'.basename($file)) }}" class="btn btn-default btn-sm">
+		                    <a href="{{ url('laravel/logs/remove/'.sha1(date('Y-m-d H:i')).'_'.basename($file)) }}" class="btn btn-default btn-sm">
                                 <i class="fa fa-remove"></i> Remove
                             </a>		
 		                </td>

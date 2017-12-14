@@ -11,7 +11,7 @@
  *  Date      : 12/13/17
  *  
  */
-
+ 
 namespace dev4born\logs;
 
 use Illuminate\Support\ServiceProvider;
@@ -25,7 +25,7 @@ use Illuminate\Routing\Router;
  *  @package dev4born\logs
  *  
  */
-
+ 
 class LogsLaravelServiceProvider extends ServiceProvider
 {
     /**
@@ -50,13 +50,11 @@ class LogsLaravelServiceProvider extends ServiceProvider
 	 
     public function boot()
     {
-        $this->Routes($this->app->router);
-		
 		$this->loadViewsFrom(__DIR__.'/Views', 'logs.views');
 		
         $this->mergeConfigFrom(__DIR__.'/../../../../config/logs.php', 'logs.config');
     }
-
+	
 	/**
 	 *  
 	 *  @brief Registered routes for the application
@@ -87,7 +85,6 @@ class LogsLaravelServiceProvider extends ServiceProvider
 	 
     public function register()
     {
-        //
+        $this->Routes($this->app->router);
     }	
-
 }

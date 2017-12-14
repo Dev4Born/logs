@@ -8,12 +8,14 @@
  *  Author    : Miłosz Nowak
  *  Copyright : (c) 2017 Dev4Born
  *  Link      : https://dev4born.pro
- *  Date      : 12/12/17
+ *  Date      : 12/14/17
  *  
  */
-
+ 
 namespace dev4born\logs\Http\Controllers;
 
+use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 
@@ -25,7 +27,7 @@ use Illuminate\Http\Request;
  *  @package dev4born\logs
  *  
  */
-
+ 
 class LogsController extends Controller
 {
 	/**
@@ -43,18 +45,32 @@ class LogsController extends Controller
 	 *  
 	 *  @brief Create a new controller instance
 	 *  
+	 *  @param Request $request
+	 *  @param Redirector $redirect
 	 *  
 	 *  @return void
 	 *  
 	 */
 	
-	public function __construct()
+	public function __construct(Request $request, Redirector $redirect)
 	{
-		$this->permissions = $this->permission();
+		$this->routers = $request->route('secret');
 		
-		$this->middleware($this->permissions);
-	}
+		if($this->permission($this->routers) != true) {
+			
+			$redirect->to('/')->send();
 
+        } elseif($this->routers == 'view') {
+			
+			$this->middleware($this->permission($this->routers));
+			
+		} elseif($this->permission($this->routers) != $this->routers) {
+			
+		    $redirect->to('/')->send();
+
+        } 
+	}
+	
 	/**
 	 *  
 	 *  @brief Show all logs/events
@@ -82,49 +98,13 @@ class LogsController extends Controller
 		    $logs = false;	
 			
 		}
-
+	
 		return view('logs.views::logs', ['request' => $request, 
 		                                 'logs'    => $logs,
-		                                 'list'    => $list]);
-		
+		                                 'list'    => $list]);	
+	
 	}
 
-	/**
-	 *  
-	 *  @brief Download log file
-	 *  
-	 *  @param String $filename
-	 *  
-	 *  @return Response (download)
-	 *  
-	 */
-	
-	public function download(string $filename)
-	{
-		$files = storage_path().'/logs/'.$filename;
-		
-		return response()->download($files);
-	}	
-	
-	/**
-	 *  
-	 *  @brief Deleting log file 
-	 *  
-	 *  @param String $filename
-	 *  
-	 *  @return Back 
-	 *  
-	 */
-	
-	public function remove(string $filename)
-	{
-	    $logs = storage_path('logs').'/'.$filename;	
-		
-		app('files')->delete($logs);
-		
-		return back();
-	}
-	
 	/**
 	 *  
 	 *  @brief Verifying that everything functions properly
@@ -153,6 +133,7 @@ class LogsController extends Controller
 	 *  
 	 *  @brief List of files with logs
 	 *  
+	 *  @parm string $basic
 	 *  
 	 *  @return Array
 	 *  
@@ -160,7 +141,7 @@ class LogsController extends Controller
 	
 	private function files($basic = '*')
 	{
-        $files = glob(storage_path() . '/logs/'.$basic);
+        $files = glob(storage_path().'/logs/'.$basic);
 		
         return array_values($files);		
 	}
@@ -169,29 +150,33 @@ class LogsController extends Controller
 	 *  
 	 *  @brief Permissions/middleware
 	 *  
-	 *  
+	 *  @parm string $secret
+	 *   
 	 *  @return Array
 	 *  
 	 */
 	
-	private function permission()
+	private function permission(string $secret)
 	{
         $configs = config('logs.config'); 
-		  
+		 
         $permissions = array();
-		
-		if(!$configs) {
-		  
-		    $configs = ['guest'];
-		
-		}
 		
 		foreach ($configs as $config) {
 			
-			array_push($permissions, $config);
+			array_push($permissions, $config); 
 
-		}	
+		}
+			
+		if($permissions[0]['secret'] != $secret) {
+			
+			$parameter = $permissions[0]['middleware'];
+				
+		} else {
+			
+			$parameter = true;
+		}
 		
-		return $permissions;
+		return $parameter;
 	}	
 }

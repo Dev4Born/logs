@@ -18,44 +18,72 @@ $ composer require dev4born/logs
 In the `$providers` array add the `service providers` for this package.
 
 ```
-dev4born\logs\LogsLaravelServiceProvider::class
+Dev4Born\logs\LogsLaravelServiceProvider::class
 ```
 
 Create config file `config/logs.php` and add the following lines.
 
 ```
+/**
+ *   
+ *  Warning! You can only grant one permissions from 2 available
+ *  
+ *  @package dev4born\logs
+ *  
+ */
+ 
 return [
-    ...
-    'admin',
-    'superuser',
+
+    'settings' => [
+	
+    /**
+	 *  
+	 *  Secret key - unique address for accessing logs
+	 *  
+	 *  http://{your-project}/laravel/{secret-key}/logs
+	 *  
+	 */
+	
+        'secret' => '',
+
+    /**
+	 *  
+	 *  Allowed permissions (middleware) for accessing logs
+	 *  
+	 *  http://{your-project}/laravel/view/logs
+	 *  
+	 */   
+		
+        'middleware' => [
+            
+		],
+		
+	],
+	
 ];
 ```
 
-You can specify permissions (middleware) for accessing logs.
+You can specify 2 permissions (secret key or middleware) for accessing logs.
 
 ## Usage
 
-Go to http://{your-project}/laravel/logs 
+Secret key
+
+http://{your-project}/laravel/{your-secret-key}/logs 
+
+Middleware
+
+http://{your-project}/laravel/view/logs 
 
 ## JSON API
 
-Go to http://{your-project}/laravel/logs/json
+Secret key
 
-**Output**
+http://{your-project}/laravel/{your-secret-key}/logs/json
 
-There are no problems.
+Middleware
 
-```
-{'error':'Everything functions properly.'}
-```
-
-There was an error.
-
-```
-{'error':'Perhaps an error occurred - check the logs/events.'}
-```
-
-Messages can be implemented in the dashboard.
+http://{your-project}/laravel/view/logs/json
 
 ## Changelog
 

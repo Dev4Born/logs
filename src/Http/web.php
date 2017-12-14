@@ -12,8 +12,8 @@
  *  
  */
 
-Route::get('laravel/logs', 'LogsController@logs');
-Route::get('laravel/logs/json', 'LogsController@json');
-Route::get('laravel/logs/{filename}', 'LogsController@download');
-Route::get('laravel/logs/remove/{filename}', 'LogsController@remove');
+Route::get('laravel/{secret}/logs', 'LogsController@logs');
+Route::get('laravel/{secret}/logs/json', 'LogsController@json');
+Route::get('laravel/logs/{filename}', 'LogsActionsController@download');
+Route::get('laravel/logs/remove/{filename}', 'LogsActionsController@remove');
 
