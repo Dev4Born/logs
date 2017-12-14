@@ -85,6 +85,22 @@ Middleware
 
 http://{your-project}/laravel/view/logs/json
 
+**Output**
+
+There are no problems.
+
+```
+{'error':'Everything functions properly.'}
+```
+
+There was an error.
+
+```
+{'error':'Perhaps an error occurred - check the logs/events.'}
+```
+
+Messages can be implemented in the dashboard.
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
