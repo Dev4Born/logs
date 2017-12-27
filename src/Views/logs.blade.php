@@ -8,7 +8,7 @@
 
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="https://dev4born.pro/pub/css/bootstrap.css" rel="stylesheet">
+	<link href="https://dev4born.pro/pub/css/bootstrap.old.css" rel="stylesheet">
 	
     <style type="text/css">
         body {
