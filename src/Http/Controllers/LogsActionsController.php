@@ -83,7 +83,7 @@ class LogsActionsController extends Controller
 		
 		}
 		
-	    $logs = storage_path('logs').'/'.$this->token($filename)[1];	
+	    $logs = storage_path().'/logs/'.$this->token($filename)[1];	
 		
 		app('files')->delete($logs);
 		
