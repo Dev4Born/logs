@@ -18,7 +18,7 @@ $ composer require dev4born/logs
 In the `$providers` array add the `service providers` for this package.
 
 ```
-Dev4Born\logs\LogsLaravelServiceProvider::class
+dev4born\logs\LogsLaravelServiceProvider::class
 ```
 
 Create config file `config/logs.php` and add the following lines.
